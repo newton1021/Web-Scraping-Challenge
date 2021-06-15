@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>Mission to Mars</title>
+		
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+		
+		<link rel="stylesheet" type="text/css" href="/static/style.css">
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+		
+
+	</head>
+	
+	
+	
+	<body>
+		<div class="container">
+			<div class = "row">
+				<header class="col-12">
+					<h1>Hello, Welcome to Mars!</h1>
+				</header>
+			</div>
+			<div class = "row">
+				
+				<div class="col-lg-5" id="feature">
+					<img src="{{  img_path  }}" alt="New image">
+				</div>
+				
+				<div class="col-2">
+				</div>
+				
+				
+				<div id="facts" class="col-lg-5">
+					<h2>Facts About Mars</h2>
+					<table>
+						
+						{%  for fact in facts  %}
+						
+						<tr>
+							<th>{{  fact["Feature"]  }}</th> <td> {{  fact["Value"]  }}</td>
+						</tr>
+						
+						{%  endfor  %}
+					</table>
+				</div>
+			</div>
+				
+				
+				
+				
+				
+				
+				<div class="row">
+					
+					<table id="news" class="table">
+						<thead><h2>What is the latest news on MARS</h2></thead>
+						{%  for a in articles  %}
+						<tr>
+							<th>{{  a["title"]   }}</th> <td>{{  a["tease"]   }}</td>
+						</tr>
+						
+						{%  endfor  %}
+					</table>
+				</div>
+				<hr/>
+				
+
+				
+				<div class="row">
+					<h2>Images of each Hemisphere</h2>
+				</div>
+				<div class="row">
+					<ul class="list-group">
+						{%  for hemi in img_array  %}
+						<li> 
+							<a href='{{  hemi["img_url"]  }}'>{{  hemi["title"]  }}</a>
+						</li>
+						{%  endfor  %}
+					</ul>
+				</div>
+			
+			
+			<div class = "row" id="foot">
+				<div class="col-10" >
+				<p>Data provided through <strong> <a href="https://redplanetscience.com/">Red Planet Science</a> </strong>. updated on {{  update  }}</p>
+				
+				</div>
+				<div class="col-2">
+					<a href="/scrape" class="btn btn-info" role="button">Update Data</a>
+				</div>
+			</div>
+		</div>
+
+	</body>
+</html>
